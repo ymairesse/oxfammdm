@@ -1,0 +1,34 @@
+<?php
+
+session_start();
+
+require_once '../../config.inc.php';
+
+// ressources principales toujours nécessaires: classes Application, User, Smarty, 
+include '../entetes.inc.php';
+
+// fixation de la date "année" et "mois". 
+$year = isset ($_POST['year']) ? $_POST['year'] : Null;
+$month = isset ($_POST['month']) ? $_POST['month'] : Null;
+
+// nombre de jours dans ce mois
+$nbJours = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+
+// ---------------------------------------------------------------------------------
+// établir une grille vide des périodes de permanences pour le mois sélectionné
+// la fonction recherche automatiquement à quelle époque cela correspond
+
+$monthGrid = $Planning->getMonthGrid($month, $year);
+
+// ---------------------------------------------------------------------------------
+// recherche des inscriptions au planning dans cette période $month / $year
+$inscriptions = $Planning->getInscriptions($month, $year);
+
+// rattachement des inscriptions aux jours et périodes dans la grille générale
+foreach ($inscriptions as $jourDuMois => $lesPeriodes) {
+    foreach ($lesPeriodes as $numeroPeriode => $lesBenevoles) {
+        foreach ($lesBenevoles as $pseudo => $unBenevole)
+            $monthGrid[$jourDuMois]['periodes'][$numeroPeriode]['benevoles'][$pseudo] = $unBenevole;
+    }
+}
+

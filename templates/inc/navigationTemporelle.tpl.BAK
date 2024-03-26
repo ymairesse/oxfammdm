@@ -1,0 +1,38 @@
+<div id="navTempo" style="text-align: center; background-color: #f9f996">
+  <button
+    type="button"
+    id="btn-prevMonth"
+    class="btn btn-primary btn-sm pull-left mt-1 ms-1"
+    title="Mois précédent"
+  >
+    <i class="fa fa-arrow-left"></i> Mois précédent
+  </button>
+  <button
+    type="button"
+    id="btn-prevDay"
+    class="btn btn-secondary btn-sm pull-left mt-1 me-1"
+    title="Jour précédent"
+  >
+  <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> 
+    Jour Précédent
+  </button>
+  <span class="text-center fs-1 text-primary fw-bold display-1"
+    >{$month} <span class="hidden-xs">{$year}</span></span
+  >
+  <button
+    type="button"
+    id="btn-prevDay"
+    class="btn btn-secondary btn-sm pull-left mt-1 me-1"
+    title="Jour suivant"
+  >
+  <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> 
+    Jour Précédent
+  </button>
+  <button
+    type="button"
+    id="btn-nextMonth"
+    class="btn btn-primary btn-sm pull-right mt-1 me-1"
+  >
+    Mois suivant <i class="fa fa-arrow-right"></i>
+  </button>
+</div>

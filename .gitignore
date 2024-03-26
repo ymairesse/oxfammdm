@@ -1,0 +1,8 @@
+*.tpl.php
+*.js.php
+*.sty.php
+*.html.php
+*.sql
+*.csv
+*.pdf
+*.ttf

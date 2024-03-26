@@ -1,0 +1,21 @@
+<?php
+
+session_start();
+
+require_once '../../config.inc.php';
+
+// ressources principales toujours nécessaires: classes Application, User, Smarty, 
+include '../entetes.inc.php';
+
+// Nouveau congé férié pour quelle époque?
+$idEpoque = isset ($_POST['idEpoque']) ? $_POST['idEpoque'] : Null;
+
+$listeEpoques = $Planning->getListeEpoques();
+// si l'informaton manque, prendre l'époque actuelle
+
+
+$smarty->assign('idEpoque', $idEpoque);
+$smarty->assign('listeEpoques', $listeEpoques);
+
+$smarty->display('conges/modal/modalAddFerie.tpl');
+
